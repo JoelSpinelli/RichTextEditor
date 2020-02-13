@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rich Text Editor</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/fontawesome.js"></script>
+  </head>
+  <body>
+    <section class="editor">
+      <div class="buttons">
+        <ul>
+          <li onclick="clearDoc(event)"><i class="fas fa-broom"></i></li>
+          <li><i class="fas fa-text-height"></i></li>
+          <li onclick="applyCommand('bold')"><i class="fas fa-bold"></i></li>
+          <li><i class="fas fa-italic"></i></li>
+          <li><i class="fas fa-underline"></i></li>
+        </ul>
+      </div>
+      <div class="text-box" contenteditable="true"></div>
+    </section>
+    <script>
+      let $ = document.querySelector.bind(document);
+      let textBox = $('.text-box');
+
+      function clearDoc(event) {
+        event.preventDefault();
+        if(confirm('Tem certeza que deseja limpar tudo?')){
+          textBox.innerHTML = '';
+        }
+      }
+
+      function applyCommand(cmd, value) {
+        debugger
+        document.execCommand(cmd, false, value);
+        textBox.focus();
+      }
+    </script>
+  </body>
+</html>
